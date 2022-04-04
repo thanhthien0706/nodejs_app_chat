@@ -1,4 +1,5 @@
 const socket = io("https://nodejs-chat-me.herokuapp.com/");
+// const socket = io("http://localhost:3000/");
 let idUser = "";
 
 socket.on("server-send-res-fail", (data) => {
@@ -89,6 +90,15 @@ $(document).ready(function () {
 
   $("#btn_send_text").click(function () {
     const mess = $("#input_text_mess").val();
+    $("#input_text_mess").val("");
     socket.emit("client-send-mess", mess);
   });
 });
+
+function sendMessage(e) {
+  if (e.keyCode == 13) {
+    const mess = $("#input_text_mess").val();
+    $("#input_text_mess").val("");
+    socket.emit("client-send-mess", mess);
+  }
+}
