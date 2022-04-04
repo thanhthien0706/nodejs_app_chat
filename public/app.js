@@ -1,4 +1,6 @@
-const socket = io("http://localhost:3000/");
+const socket = io(
+  "http://localhost:3000/" || "https://nodejs-chat-me.herokuapp.com/"
+);
 let idUser = "";
 
 socket.on("server-send-res-fail", (data) => {
